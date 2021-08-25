@@ -4,7 +4,7 @@ import {BonifyItem} from '../src/bonifyItem.js';
 import { LegendaryItem } from '../src/legendaryItem.js';
 
 describe("GildedRose shop manager", function () {
-  var listItems;
+  let listItems;
 
   beforeEach(function () {
     listItems = [];
@@ -134,7 +134,7 @@ describe("GildedRose shop manager", function () {
     });
   });
 
-  it("La qualité ne descend pas en dessous de 0 sauf Sulfuras", function () {
+  it("La qualité ne descend pas en dessous de 0", function () {
     listItems.push(new StandardItem("+5 Dexterity Vest", -15, 1));
     listItems.push(new StandardItem("Conjured", -22, 2));
     listItems.push(new BonifyItem("Backstage passes to a TAFKAL80ETC concert", 3, 22));
