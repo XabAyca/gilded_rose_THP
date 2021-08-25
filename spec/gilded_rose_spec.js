@@ -111,8 +111,9 @@ describe("GildedRose shop manager", function () {
     });
   });
 
-  it("La qualité ne dépasse pas 50 sauf Sulfuras", function () {
+  it("La qualité ne dépasse pas 50 pour tous sauf Sulfuras", function () {
     listItems.push(new StandardItem("+5 Dexterity Vest", -15, 48));
+    listItems.push(new StandardItem("Conjured", -15, 35));
     listItems.push(new BonifyItem("Backstage passes to a TAFKAL80ETC concert", 3, 49));
     listItems.push(new BonifyItem("Aged Brie", 20, 49));
     listItems.push(new LegendaryItem("Sulfuras", null, 80));
@@ -122,6 +123,7 @@ describe("GildedRose shop manager", function () {
 
     var expected = [
       { sellIn: -16, quality: 46 },
+      { sellIn: -16, quality: 31 },
       { sellIn: 2, quality: 50 },
       { sellIn: 19, quality: 50 },
       { sellIn: null, quality: 80 },
@@ -134,6 +136,7 @@ describe("GildedRose shop manager", function () {
 
   it("La qualité ne descend pas en dessous de 0 sauf Sulfuras", function () {
     listItems.push(new StandardItem("+5 Dexterity Vest", -15, 1));
+    listItems.push(new StandardItem("Conjured", -22, 2));
     listItems.push(new BonifyItem("Backstage passes to a TAFKAL80ETC concert", 3, 22));
     listItems.push(new BonifyItem("Aged Brie", 20, 12));
     listItems.push(new LegendaryItem("Sulfuras", null, 80));
@@ -143,6 +146,7 @@ describe("GildedRose shop manager", function () {
 
     var expected = [
       { sellIn: -16, quality: 0 },
+      { sellIn: -23, quality: 0 },
       { sellIn: 2, quality: 25 },
       { sellIn: 19, quality: 13 },
       { sellIn: null, quality: 80 },
